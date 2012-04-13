@@ -1,0 +1,189 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+    <head>
+        <title>Editor - Virtual Barbershop</title>
+        <meta name="Content-Type" content="text/html; charset=utf-8"
+        />
+        <meta http-equiv="imagetoolbar" content="no" />
+        <link rel="shortcut icon" href="http://akwww.polyvorecdn.com/rsrc/img/favicon2.ico"
+        />
+        <script type="text/javascript">
+            if (window._polyvoreMode == 'prod') {
+                window.onerror = function () {
+                    return true;
+                };
+            }
+        </script>
+        
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <script src="editor.js"></script>
+        <script type="text/javascript">
+            var polyvore_page_name = 'app';
+            var polyvore_experiments = 'affiliate_offer|no,blank_canvas_text|collage,ga_test1|10d,ga_test2|50b,lookbook_carousel_ads|off,mast_announcement|create_outfits_v2,recent_activity|control,shop_ads|none,shop_alt_views|yes,tid_editor_clickthrough|off,uic|ctrl';
+            
+        </script>
+        <script>
+            var _sf_async_config = {
+                "authors": "",
+                "domain": "polyvore.com",
+                "uid": "31094",
+                "path": null,
+                "title": null,
+                "sections": ""
+            };
+        </script>
+    </head>
+    
+    <body style="overflow: hidden; padding: 0; margin: 0; height: 100%;" class="wk win" id="body">
+        <!--
+        <div class="compact" id="header_big">
+            <table cellspacing="0" cellpadding="0" id="top_nav">
+                <tbody>
+                    <tr>
+                        <td id="nav_logo">
+                            <a href="http://www.polyvore.com/" id="logo"><img width="162" src="http://akwww.polyvorecdn.com/rsrc/img/logos/logo_noborder_black_trans_162x17.png" height="17" /></a>
+                        </td>
+                        <td class="" id="nav_top">
+                            <a href="http://www.polyvore.com/">TOP</a>
+                        </td>
+                        <td class="" id="nav_following">
+                            <a href="../cgi/home">FOLLOWING</a>
+                        </td>
+                        <td class="" id="nav_likes">
+                            <a href="../cgi/home.likes"><div class="sprite likes"></div></a>
+                        </td>
+                        <td class="" id="nav_advice">
+                            <a href="../cgi/advice.browse">ASK</a>
+                        </td>
+                        <td class="" id="nav_shop">
+                            <a href="../cgi/shop.browse">SHOP</a>
+                        </td>
+                        <td class="select" id="nav_create">
+                            <a href="../cgi/app">CREATE</a>
+                        </td>
+                        <td class="" id="nav_signin">
+                            <ul class="actions inline">
+                                <li>
+                                    <a href="../cgi/register" onclick="SignInBox.register(); return false;">Register</a>
+                                </li>
+                                <li>
+                                    <a href="../cgi/login" onclick="SignInBox.signIn(); return false;">Sign in</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>-->
+		<div class="compact" id="header_big">
+            <table cellspacing="0" cellpadding="0" id="top_nav">
+                <tbody>
+                    <tr>
+                        <td>
+                            Причёсочки:
+                        </td>
+						<td>
+                            <a href="?0"><img width="30" height="30" src="haircut1.png" /></a>
+                        </td>
+						<td>
+                            <a href="?1"><img width="30" height="30" src="haircut2.png" /></a>
+                        </td>
+						<td>
+                            <a href="?2"><img width="30" height="30" src="haircut3.png" /></a>
+                        </td>
+						<td>
+                            <a href="?3"><img width="30" height="30" src="haircut4.png" /></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+		
+		<table id='app' class='wide' cellpadding="0" cellspacing="8">
+            <tr valign='top' height='100%'>
+                <td id='container' width='100%'>
+                    <div id='canvas' trackcontext='canvas'>
+						<div style="width: 100%; height: 100%; z-index: -1; text-align:center" classname="item selectNode unselectable" class="item selectNode unselectable" unselectable="on">
+							<div id="faceDiv" style="display: inline-block; margin: 100px">
+								<img id="faceImg" src="bald_guy.jpg" width="300" /><br /><br />
+								Привет, я рандомный лысый чувак. Хочу причёсочку!
+							</div>
+						</div>
+					</div>
+                </td>
+                <td width='0%'>
+                    <div id='panel' style="display:none"></div>
+                </td>
+            </tr>
+        </table>
+        <script>
+            var app = new App($('canvas'), $('panel'), {
+                "show_promoted_items": "",
+                "max_set_items": 50,
+                "contest": null,
+                "user_info": {},
+                "selected_tab": null,
+                "lookbooks": null,
+                "template_edit": null
+            });
+        </script>
+        <script>
+            window._xsrc_ids = [];
+        </script>
+        <script id="inlinescripts">
+            Event.trigger(document, 'available');;
+            SignInBox.initNav("nav_signin");
+            if (window.replaceXsrc) {
+                setTimeout(replaceXsrc, 2000);
+            };
+        </script>
+		<script>
+			//var data = {src: "image.jpg", w: 100, h: 100, x: 100, y: 100, imgurl: "image.jpg", type: Item.TYPES.IMAGE};
+			
+			function getHashVariable() {
+				var hash = window.location.search;
+				if (hash.length > 1) return parseInt(hash.substring(1), 10);
+				else return 0;
+			}
+			
+			var h = [
+				{"w": "295", "h": "363", "thing_id": "haircut1.png"},
+				{"w": "264", "h": "364", "thing_id": "haircut2.png"},
+				{"w": "350", "h": "475", "thing_id": "haircut3.png"},
+				{"w": "350", "h": "475", "thing_id": "haircut4.png"},
+			];
+			
+			var imgnum = getHashVariable();
+			var m = h[imgnum];
+			m["type"] = Item.TYPES.IMAGE;
+			var transfer = new DataTransfer();
+			transfer.setData("item", m);
+			transfer.proxy = UI.itemRender(m, "s");
+			
+			var clicked = false;
+			Event.addListener(app.canvas._node, "click", function(b) {
+				if (!clicked) {
+					clicked = true;
+					console.log('Canvas clicked');
+					b.xDataTransfer = transfer;
+					console.log('xDataTransfer: ', b.xDataTransfer);
+					app.onCanvasDrop(b);
+				}
+			}, app);
+			
+			/*var facePos = nodeXY($('faceImg'));
+			var faceSize = Dim.fromNode($('faceImg'));
+			if (document.createEvent) {
+				var evObj = document.createEvent('MouseEvents');
+				evObj.initMouseEvent("click", true, true, window, 0, 0, 0,
+					facePos.x + faceSize.w/2, facePos.y + faceSize.h/2, false, false, false, false, 0, null);
+				app.canvas._node.dispatchEvent(evObj);
+			} else if (document.createEventObject) {
+				app.canvas._node.fireEvent('onclick');
+			}*/
+        </script>
+        
+    </body>
+
+</html>
