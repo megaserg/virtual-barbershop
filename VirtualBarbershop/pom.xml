@@ -27,6 +27,7 @@
         <log4jVersion>1.2.16</log4jVersion>
         <servletApiVersion>2.5</servletApiVersion>
         <jsonsimpleVersion>1.1</jsonsimpleVersion>
+        <jbossResteasyVersion>2.2.1.GA</jbossResteasyVersion>
     </properties>
 
     <dependencyManagement>
@@ -91,6 +92,13 @@
                 <artifactId>json-simple</artifactId>
                 <version>${jsonsimpleVersion}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-spring</artifactId>
+                <version>${jbossResteasyVersion}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
