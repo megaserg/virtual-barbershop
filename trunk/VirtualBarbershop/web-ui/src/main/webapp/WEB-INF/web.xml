@@ -13,12 +13,21 @@
         <servlet-name>VirtualBarbershopServlet</servlet-name>
         <url-pattern>/vb</url-pattern>
     </servlet-mapping>
+
+    <listener>
+        <listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.jboss.resteasy.plugins.spring.SpringContextLoaderListener</listener-class>
+    </listener>
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:serverConfig.xml</param-value>
+        <param-value>classpath:/serverConfig.xml</param-value>
     </context-param>
 </web-app>

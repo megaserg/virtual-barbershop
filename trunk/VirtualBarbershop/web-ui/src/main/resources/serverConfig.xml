@@ -3,6 +3,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <import resource="storageConfiguration.xml"/>
+    <import resource="classpath:/storageConfiguration.xml"/>
+
+    <bean id="storageConfigurator" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath:storage.properties" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+    </bean>
+
+    <bean id="storage" class="edu.virtual.barbershop.Storage">
+        <property name="haircutFolder" value="${haircutFolder}"/>
+        <property name="collageFolder" value="${collageFolder}"/>
+        <property name="tempFolder" value="${tempFolder}"/>
+    </bean>
 
 </beans>
