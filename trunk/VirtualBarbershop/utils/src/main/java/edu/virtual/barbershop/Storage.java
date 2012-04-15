@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Required;
 public class Storage {
     private static final Logger logger = LoggerFactory.getLogger(Storage.class);
 
-    public String haircutFolder;
+    private String haircutFolder;
     private String collageFolder;
     private String tempFolder;
 

@@ -22,6 +22,7 @@ public class ImageAction extends Action {
                         ImageIO.read(new File(image2)),
                         x, y, angle, sx, sy
                 );
+
         ImageIO.write(res, "PNG", new File("combined.png"));
 
         //resp.setContentType("image/png");
