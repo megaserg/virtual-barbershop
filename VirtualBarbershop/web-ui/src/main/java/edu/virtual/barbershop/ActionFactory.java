@@ -7,13 +7,11 @@ public class ActionFactory {
     private static final Logger logger = LoggerFactory.getLogger(ActionFactory.class);
 
     public Action create(String actionName, Storage storage) {
-        if (actionName == null) {
+        if (actionName.equalsIgnoreCase("upload")) {
             UploadImageAction uia = new UploadImageAction();
             uia.setStorage(storage);
             return uia;
-        }
-
-        if (actionName.equalsIgnoreCase("getHaircuts")) {
+        } else if (actionName.equalsIgnoreCase("getHaircuts")) {
             HaircutsAction ha = new HaircutsAction();
             ha.setStorage(storage);
             return ha;

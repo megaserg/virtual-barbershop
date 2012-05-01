@@ -13,10 +13,8 @@
             var oOutput = document.getElementById("output");
             var oData = new FormData(document.getElementById("formElement"));
 
-            oData.append("action", "upload");
-
             var oXHR = new XMLHttpRequest();
-            oXHR.open("POST", loc + '/vb', true);
+            oXHR.open("POST", loc + '/vb?action=upload', true);
             oXHR.onreadystatechange = function(oEvent) {
                 if (oXHR.readyState == 4) {
                     oOutput.innerHTML = oXHR.response;
