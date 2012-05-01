@@ -9,8 +9,12 @@
     </bean>
 
     <bean id="storage" class="edu.virtual.barbershop.Storage">
-        <property name="haircutFolder" value="${haircutFolder}"/>
-        <property name="collageFolder" value="${collageFolder}"/>
-        <property name="tempFolder" value="${tempFolder}"/>
+        <property name="haircutsFolder" value="${haircutsFolder}"/>
+        <property name="collagesFolder" value="${collagesFolder}"/>
+        <property name="imagesFolder" value="${imagesFolder}"/>
+        <property name="dbUrl" value="${dbUrl}"/>
+        <property name="dbName" value="${dbName}"/>
+        <property name="user" value="${user}"/>
+        <property name="password" value="${password}"/>
     </bean>
 </beans>

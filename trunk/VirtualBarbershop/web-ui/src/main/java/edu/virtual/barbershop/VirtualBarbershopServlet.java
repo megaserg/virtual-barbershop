@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.io.*;
 
 public final class VirtualBarbershopServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(VirtualBarbershopServlet.class);
@@ -22,7 +22,7 @@ public final class VirtualBarbershopServlet extends HttpServlet {
         WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
         Storage storage = (Storage)ctx.getBean("storage");
         if (!started) {
-            storage.initBaseFolder(getServletContext().getRealPath("/"));
+            storage.init(getServletContext().getRealPath("/"));
             started = true;
         }
 

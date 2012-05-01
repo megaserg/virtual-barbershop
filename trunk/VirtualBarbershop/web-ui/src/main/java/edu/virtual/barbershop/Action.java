@@ -1,5 +1,6 @@
 package edu.virtual.barbershop;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,4 +18,8 @@ public abstract class Action {
     }
 
     public abstract void perform(HttpServletRequest request, HttpServletResponse response) throws IOException;
+
+    protected String escape(String input) {
+        return StringEscapeUtils.escapeHtml(StringEscapeUtils.escapeJavaScript(input));
+    }
 }
