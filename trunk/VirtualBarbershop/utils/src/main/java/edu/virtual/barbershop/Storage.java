@@ -128,7 +128,7 @@ public class Storage {
                             "Offer.price, Barbershop.name as barbershop_name, Barbershop.phone" +
                     "from Collage" +
                     "join Haircut on Collage.haircut_id = Haircut.id" +
-                    "join Offer on Haicut.id = Offer.haircut_id" +
+                    "join Offer on Haircut.id = Offer.haircut_id" +
                     "join Barbershop on Offer.barbershop_id = Barbershop.id");
             if (!resultSet.first()) {
                 return result;
