@@ -96,9 +96,6 @@ public class Storage {
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from Collage");
-            if (!resultSet.first()) {
-                return result;
-            }
 
             while (resultSet.next()) {
                 String collageId = resultSet.getString("id");
@@ -124,18 +121,14 @@ public class Storage {
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(
-                    "select Collage.id as collage_id, Haircut.name as haircut_name," +
-                            "Offer.price, Barbershop.name as barbershop_name, Barbershop.phone" +
-                    "from Collage" +
-                    "join Haircut on Collage.haircut_id = Haircut.id" +
-                    "join Offer on Haircut.id = Offer.haircut_id" +
+                    "select Haircut.id as haircut_id, Haircut.name as haircut_name, " +
+                            "Offer.price, Barbershop.name as barbershop_name, Barbershop.phone " +
+                    "from Haircut " +
+                    "join Offer on Haircut.id = Offer.haircut_id " +
                     "join Barbershop on Offer.barbershop_id = Barbershop.id");
-            if (!resultSet.first()) {
-                return result;
-            }
 
             while (resultSet.next()) {
-                String collageId = resultSet.getString("collage_id");
+                String haircutId = resultSet.getString("haircut_id");
                 String haircutName = resultSet.getString("haircut_name");
                 String price = resultSet.getString("price");
                 String barbershopName = resultSet.getString("barbershop_name");
@@ -147,7 +140,7 @@ public class Storage {
                 info[2] = barbershopName;
                 info[3] = phone;
 
-                result.put(collageId, info);
+                result.put(haircutId, info);
             }
             resultSet.close();
             statement.close();
@@ -191,9 +184,6 @@ public class Storage {
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select id from Haircut");
-            if (!resultSet.first()) {
-                return result;
-            }
 
             while (resultSet.next()) {
                 result.add(resultSet.getString("id"));
