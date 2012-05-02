@@ -61,7 +61,7 @@ public class Storage {
         this.dbUrl = dbUrl;
     }
 
-    public void init(String baseFolder) {
+    public boolean init(String baseFolder) {
         this.baseFolder = baseFolder;
 
         try {
@@ -70,7 +70,7 @@ public class Storage {
             connection = DriverManager.getConnection(dbUrl + dbName, user, password);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            return;
+            return false;
         }
 
         try {
@@ -105,6 +105,8 @@ public class Storage {
         } catch (SQLException s) {
             logger.info("DB already created.");
         }
+
+        return true;
     }
 
     public String getImagesFolder() {

@@ -17,7 +17,8 @@ public class UploadHaircutAction extends Action {
         final String haircutId = String.valueOf(System.currentTimeMillis());
 
         try {
-            MultipartRequest multipartRequest = new MultipartRequest(req, storage.getImagesFolder(),
+            MultipartRequest multipartRequest = new MultipartRequest(req,
+                    storage.getBaseFolder() + storage.getHaircutsFolder(),
                     5000000, req.getCharacterEncoding(), new FileRenamePolicy() {
                 @Override
                 public File rename(File file) {
