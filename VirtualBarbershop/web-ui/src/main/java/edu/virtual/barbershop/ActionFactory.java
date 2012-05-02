@@ -27,6 +27,18 @@ public class ActionFactory {
             SaveCollageAction sca = new SaveCollageAction();
             sca.setStorage(storage);
             return sca;
+        } else if (actionName.equalsIgnoreCase("getBarbershops")) {
+            GetBarbershopsAction gba = new GetBarbershopsAction();
+            gba.setStorage(storage);
+            return gba;
+        } else if (actionName.equalsIgnoreCase("addBarbershop")) {
+            AddBarbershopAction aba = new AddBarbershopAction();
+            aba.setStorage(storage);
+            return aba;
+        } else if (actionName.equalsIgnoreCase("uploadHaircut")) {
+            UploadHaircutAction uha = new UploadHaircutAction();
+            uha.setStorage(storage);
+            return uha;
         } else {
             throw new RuntimeException(actionName + " cannot be found.");
         }
