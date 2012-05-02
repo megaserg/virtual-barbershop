@@ -63,9 +63,6 @@ public class Storage {
 
     public void init(String baseFolder) {
         this.baseFolder = baseFolder;
-        haircutsFolder = baseFolder + haircutsFolder;
-        collagesFolder = baseFolder + collagesFolder;
-        imagesFolder = baseFolder + imagesFolder;
 
         try {
             String driverName = "com.mysql.jdbc.Driver";
@@ -78,6 +75,10 @@ public class Storage {
 
     public String getImagesFolder() {
         return imagesFolder;
+    }
+
+    public String getBaseFolder() {
+        return baseFolder;
     }
 
     public Map<String, String> getHaircuts() {
@@ -155,10 +156,10 @@ public class Storage {
     public String saveCollage(String faceId, String haircutId,
             int x, int y, double angle, double sx, double sy) throws IOException
     {
-        String faceImagePath = imagesFolder + faceId + ".jpg";
-        String haircutImagePath = haircutsFolder + haircutId + ".png";
+        String faceImagePath = baseFolder + imagesFolder + faceId + ".jpg";
+        String haircutImagePath = baseFolder + haircutsFolder + haircutId + ".png";
         String collageId = String.valueOf(System.currentTimeMillis());
-        String collageImagePath = collagesFolder + collageId + ".png";
+        String collageImagePath = baseFolder + collagesFolder + collageId + ".png";
 
         BufferedImage res =
             ImageDealer.mergeImages(
