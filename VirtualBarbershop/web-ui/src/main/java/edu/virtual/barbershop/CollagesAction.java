@@ -28,7 +28,7 @@ public class CollagesAction extends Action {
         for (String id : collages.keySet()) {
             count++;
             output.append("\"").append(id).append("\"");
-            output.append(":\"").append(collages.get(id)[0]).append("\"");
+            output.append(":\"").append(collages.get(id)[1]).append("\"");
             if (count < collages.keySet().size()) {
                 output.append(",");
             }

@@ -17,7 +17,8 @@ public class UploadImageAction extends Action {
                     5000000, req.getCharacterEncoding(), new FileRenamePolicy() {
                 @Override
                 public File rename(File file) {
-                    return new File(storage.getImagesFolder() + imageId + ".jpg");
+                    return new File(storage.getBaseFolder() + storage.getImagesFolder()
+                            + imageId + ".jpg");
                 }
             });
 
