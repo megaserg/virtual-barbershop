@@ -13,7 +13,8 @@ public class UploadImageAction extends Action {
         try {
             final String imageId = String.valueOf(System.currentTimeMillis());
 
-            MultipartRequest multipartRequest = new MultipartRequest(req, storage.getImagesFolder(),
+            MultipartRequest multipartRequest = new MultipartRequest(req,
+                    storage.getBaseFolder() + storage.getImagesFolder(),
                     5000000, req.getCharacterEncoding(), new FileRenamePolicy() {
                 @Override
                 public File rename(File file) {

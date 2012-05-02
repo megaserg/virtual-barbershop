@@ -21,9 +21,9 @@ public final class VirtualBarbershopServlet extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
         Storage storage = (Storage)ctx.getBean("storage");
+
         if (!started) {
-            storage.init(getServletContext().getRealPath("/"));
-            started = true;
+            started = storage.init(getServletContext().getRealPath("/"));
         }
 
         Action action = factory.create(req.getParameter("action"), storage);
