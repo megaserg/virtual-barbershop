@@ -1,0 +1,104 @@
+﻿body, input, button {
+	font-family: Georgia, "Palatino Linotype", Sylfaen, Tahoma, serif;
+	font-size: 16pt;
+}
+
+body  {
+	background-color: #CCCCFF;
+}
+
+table {
+	border: 0px;
+}
+
+td {
+	text-align: center;
+	vertical-align: middle;
+	border: 0px solid black;
+}
+
+div.centered  {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.hr {
+	width: 400px;
+	height: 0px;
+	border-top: 1px solid navy;
+}
+
+.placeholder {
+	background-color: #9999FF;
+}
+
+.displaynone {
+	display: none;
+}
+
+.visibilityhidden {
+	visibility: hidden;
+}
+
+.leftalign {
+	text-align: left;
+	vertical-align: top;
+}
+
+a:visited, a:link {
+	color: blue;
+}
+
+a:hover, a:active {
+	color: green;
+}
+
+td.header {
+	font-family: Helvetica, Tahoma, Verdana;
+	font-size: 20pt;
+	font-weight: bold;
+	padding: 15px;
+}
+
+td.content {
+	padding: 20px;
+}
+
+td.footer {
+	font-size: 9pt;
+	padding: 15px;
+}
+
+span.smallheader {
+	font-size: 14pt;	
+}
+
+span.smallnote {
+	font-size: 9pt;
+	font-style: italic;
+	color: #666666;
+}
+
+.barbershops_ul li {
+	margin-bottom: 15px;
+}
+
+.alert {
+	 background-color: white;
+	 border: 5px solid red;
+	 padding: 20px;
+}
+
+#progress_div { position:relative; width:400px; /*border: 1px solid #ddd;*/ padding: 1px; border-radius: 3px; }
+#progress_bar { background-color: #6666FF; width:0%; height:25px; border-radius: 3px; }
+#progress_percent { position:absolute; top:0px; left:45%; /*display:inline-block; /*top:2px; left:48%;*/ }
+
+/*
+	font.header {font-size: 14pt}
+	li {font-size: 12pt}
+	
+	.top-left {background: #ADC7FF url("img/top-left.gif") top left no-repeat;}
+	.top-right {background: url("img/top-right.gif") top right no-repeat;}
+	.bottom-left {background: url("img/bottom-left.gif") bottom left no-repeat;}
+	.bottom-right {background: url("img/bottom-right.gif") bottom right no-repeat;}
+	.content {padding-left: 20px; padding-right: 20px; padding-top: 5px; padding-bottom: 10px; border: 2px dashed #7777FF;}*/
