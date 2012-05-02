@@ -70,6 +70,40 @@ public class Storage {
             connection = DriverManager.getConnection(dbUrl + dbName, user, password);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
+            return;
+        }
+
+        try {
+            Statement statement = connection.createStatement();
+
+            String barbershop =
+                    "create table Barbershop ( "
+                            + "id int primary key auto_increment not null, "
+                            + "name varchar(50), "
+                            + "address varchar(100), "
+                            + "phone varchar(50))";
+            String haircut =
+                    "create table Haircut ( "
+                            + "id varchar(50), "
+                            + "shape varchar(50))";
+            String collage =
+                    "create table Collage ( "
+                            + "id varchar(50), "
+                            + "haircut_id varchar(50))";
+            String offer =
+                    "create table Offer ( "
+                            + "haircut_id varchar(50), "
+                            + "barbershop_id varchar(50), "
+                            + "price varchar(50))";
+
+            statement.executeUpdate(barbershop);
+            statement.executeUpdate(haircut);
+            statement.executeUpdate(collage);
+            statement.executeUpdate(offer);
+
+            statement.close();
+        } catch (SQLException s) {
+            logger.info("DB already created.");
         }
     }
 
