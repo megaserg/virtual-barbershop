@@ -12,7 +12,14 @@ public class ImageDealer {
     private static final Logger logger = LoggerFactory.getLogger(ImageDealer.class);
 
     public static BufferedImage mergeImages(BufferedImage first, BufferedImage second, int x, int y, double angle, double sx, double sy) throws IOException {
-        BufferedImage res = new BufferedImage(first.getWidth(), first.getHeight(), first.getType());
+        BufferedImage res;
+        if (first.getHeight() > 400) {
+            double scale = 400 / (double) first.getHeight();
+            res = scaleImage(first, scale, scale);
+        } else {
+            res = new BufferedImage(first.getWidth(), first.getHeight(), first.getType());
+        }
+
         Graphics2D resGraphics = (Graphics2D) res.getGraphics();
         resGraphics.drawImage(first, 0 , 0, null);
 
