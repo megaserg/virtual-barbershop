@@ -116,31 +116,33 @@ public class Storage {
         return result;
     }
 
-    public Map<String, String[]> getInfos() {
-        Map<String, String[]> result = new HashMap<String, String[]>();
+    public Map<String, ArrayList<HashMap<String, String>>> getInfos() {
+        Map<String, ArrayList<HashMap<String, String>>> result =
+                new HashMap<String, ArrayList<HashMap<String, String>>>();
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(
-                    "select Haircut.id as haircut_id, Haircut.name as haircut_name, " +
-                            "Offer.price, Barbershop.name as barbershop_name, Barbershop.phone " +
+                    "select Haircut.id as haircut_id, Haircut.shape as haircut_shape, " +
+                            "Offer.price, Barbershop.name as barbershop_name, " +
+                            "Barbershop.phone, Barbershop.address " +
                     "from Haircut " +
                     "join Offer on Haircut.id = Offer.haircut_id " +
                     "join Barbershop on Offer.barbershop_id = Barbershop.id");
 
             while (resultSet.next()) {
                 String haircutId = resultSet.getString("haircut_id");
-                String haircutName = resultSet.getString("haircut_name");
-                String price = resultSet.getString("price");
-                String barbershopName = resultSet.getString("barbershop_name");
-                String phone = resultSet.getString("phone");
 
-                String[] info = new String[4];
-                info[0] = haircutName;
-                info[1] = price;
-                info[2] = barbershopName;
-                info[3] = phone;
+                HashMap<String, String> info = new HashMap<String, String>();
+                info.put("barbershop_name", resultSet.getString("barbershop_name"));
+                info.put("address", resultSet.getString("address"));
+                info.put("phone", resultSet.getString("phone"));
+                info.put("price", resultSet.getString("price"));
+                info.put("haircut_shape", resultSet.getString("haircut_shape"));
 
-                result.put(haircutId, info);
+                if (!result.containsKey(haircutId)) {
+                    result.put(haircutId, new ArrayList<HashMap<String, String>>());
+                }
+                result.get(haircutId).add(info);
             }
             resultSet.close();
             statement.close();
