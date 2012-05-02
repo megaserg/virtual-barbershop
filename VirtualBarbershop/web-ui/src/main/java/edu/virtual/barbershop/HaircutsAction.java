@@ -11,15 +11,13 @@ public class HaircutsAction extends Action {
         Map<String, String> haircuts = storage.getHaircuts();
 
         StringBuilder output = new StringBuilder();
-        output.append("{paths:{");
+        output.append("{\"paths\":{");
 
         int count = 0;
         for (String id : haircuts.keySet()) {
             count++;
-            output.append(id);
-            output.append(":'");
-            output.append(haircuts.get(id));
-            output.append("'");
+            output.append("\"").append(id).append("\"");
+            output.append(":\"").append(haircuts.get(id)).append("\"");
             if (count < haircuts.keySet().size()) {
                 output.append(",");
             }
@@ -28,7 +26,7 @@ public class HaircutsAction extends Action {
         output.append("}}");
 
         ServletOutputStream out = resp.getOutputStream();
-        out.print(escape(output.toString()));
+        out.print(output.toString());
         out.flush();
     }
 }

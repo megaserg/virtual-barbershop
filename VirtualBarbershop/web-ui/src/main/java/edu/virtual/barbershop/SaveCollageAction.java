@@ -18,9 +18,9 @@ public class SaveCollageAction extends Action {
         String collageId = storage.saveCollage(faceId, haircutId, x, y, angle, sx, sy);
 
         ServletOutputStream out = resp.getOutputStream();
-        String output = "{collage_id:" + collageId + "}";
+        String output = "{\"collage_id\":\"" + collageId + "\"}";
 
-        out.print(escape(output));
+        out.print(output);
         out.flush();
     }
 }

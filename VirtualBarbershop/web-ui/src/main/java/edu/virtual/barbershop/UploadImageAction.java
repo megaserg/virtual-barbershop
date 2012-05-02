@@ -22,10 +22,10 @@ public class UploadImageAction extends Action {
             });
 
             ServletOutputStream out = resp.getOutputStream();
-            String output = "{" + imageId + ":'" + storage.getImagesFolder() + imageId +
-                    ".jpg'}";
+            String output = "{\"" + imageId + "\":\"" + storage.getImagesFolder() + imageId +
+                    ".jpg\"}";
 
-            out.print(escape(output));
+            out.print(output);
             out.flush();
         } catch (IOException e) {
             logger.error(e.getMessage());

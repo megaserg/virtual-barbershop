@@ -12,26 +12,23 @@ public class CollagesAction extends Action {
 
         StringBuilder output = new StringBuilder();
 
-        output.append("{paths:{");
+        output.append("{\"paths\":{");
         int count = 0;
         for (String id : collages.keySet()) {
             count++;
-            output.append(id);
-            output.append(":'");
-            output.append(collages.get(id)[0]);
-            output.append("'");
+            output.append("\"").append(id).append("\"");
+            output.append(":\"").append(collages.get(id)[0]).append("\"");
             if (count < collages.keySet().size()) {
                 output.append(",");
             }
         }
 
-        output.append("},haircuts:{");
+        output.append("},\"haircuts\":{");
         count = 0;
         for (String id : collages.keySet()) {
             count++;
-            output.append(id);
-            output.append(":");
-            output.append(collages.get(id)[1]);
+            output.append("\"").append(id).append("\"");
+            output.append(":\"").append(collages.get(id)[0]).append("\"");
             if (count < collages.keySet().size()) {
                 output.append(",");
             }
@@ -40,7 +37,7 @@ public class CollagesAction extends Action {
         output.append("}}");
 
         ServletOutputStream out = resp.getOutputStream();
-        out.print(escape(output.toString()));
+        out.print(output.toString());
         out.flush();
     }
 }
