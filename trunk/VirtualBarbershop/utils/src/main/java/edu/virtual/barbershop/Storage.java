@@ -81,6 +81,10 @@ public class Storage {
         return baseFolder;
     }
 
+    public String getHaircutsFolder() {
+        return haircutsFolder;
+    }
+
     public Map<String, String> getHaircuts() {
         Map<String, String> result = new HashMap<String, String>();
 
@@ -180,6 +184,50 @@ public class Storage {
         }
 
         return collageId;
+    }
+
+    public void addBarbershop(String name, String address, String phone) {
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("insert into Barbershop (name, address, phone) values ('"
+                    + name + "', '" + address + "', '" + phone + "')");
+            statement.close();
+        } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
+        }
+    }
+
+    public Map<Integer, String> getBarbershops() {
+        Map<Integer, String> result = new HashMap<Integer, String>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select id, name from Barbershop");
+
+            while (resultSet.next()) {
+                Integer id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+
+                result.put(id, name);
+            }
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+    public void saveHaircut(String haircutId, String shape, String price, int barbershopId) {
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("insert into Haircut (id, shape) values ('"
+                    + haircutId + "', '" + shape + "')");
+            statement.executeUpdate("insert into Offer (haircut_id, barbershop_id, price) values ('"
+                    + haircutId + "', " + String.valueOf(barbershopId) + ", '" + price + "')");
+            statement.close();
+        } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
+        }
     }
 
     private List<String> getHaircutIds() {
