@@ -229,7 +229,7 @@ public class Storage {
         Map<String, String[]> result = new HashMap<String, String[]>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from Collage");
+            ResultSet resultSet = statement.executeQuery("select * from Collage order by id");
 
             while (resultSet.next()) {
                 String collageId = resultSet.getString("id");
@@ -363,7 +363,7 @@ public class Storage {
         List<String> result = new ArrayList<String>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select id from Haircut");
+            ResultSet resultSet = statement.executeQuery("select id from Haircut order by id");
 
             while (resultSet.next()) {
                 result.add(resultSet.getString("id"));

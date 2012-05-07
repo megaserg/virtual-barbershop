@@ -3,6 +3,11 @@
 	font-size: 16pt;
 }
 
+button {
+    cursor: pointer;
+    cursor: hand;
+}
+
 body  {
 	background-color: #CCCCFF;
 }
@@ -93,6 +98,38 @@ span.smallnote {
 #progress_bar { background-color: #6666FF; width:0%; height:25px; border-radius: 3px; }
 #progress_percent { position:absolute; top:0px; left:45%; /*display:inline-block; /*top:2px; left:48%;*/ }
 
+#haircut_gallery_container, #collage_gallery_container {
+    width: 1200px;
+    overflow-x: auto;
+}
+
+.gallery_cell {
+    padding: 3px;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.gallery_selected_cell {
+    background-color: #EEEEFF;
+}
+
+.gallery_hovered_cell {
+    background-color: #CCCCFF;
+}
+
+.face_image {
+    margin-top: 30px;
+}
+
+#large_collage_div {
+    width: 80%;
+    height: 100%;
+}
+
+.large_collage_image {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
 /*
 	font.header {font-size: 14pt}
 	li {font-size: 12pt}

@@ -3,9 +3,11 @@ package edu.virtual.barbershop;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 public class ImageDealer {
@@ -13,20 +15,22 @@ public class ImageDealer {
 
     public static BufferedImage mergeImages(BufferedImage first, BufferedImage second, int x, int y, double angle, double sx, double sy) throws IOException {
         BufferedImage res;
-        if (first.getHeight() > 400) {
+        if (first.getHeight() != 400) {
             double scale = 400 / (double) first.getHeight();
             res = scaleImage(first, scale, scale);
         } else {
             res = new BufferedImage(first.getWidth(), first.getHeight(), first.getType());
+            Graphics2D resGraphics = (Graphics2D) res.getGraphics();
+            resGraphics.drawImage(first, 0, 0, null);
         }
 
         Graphics2D resGraphics = (Graphics2D) res.getGraphics();
-        resGraphics.drawImage(first, 0 , 0, null);
 
         BufferedImage rotatedSecond = rotateImage(scaleImage(second, sx, sy), angle);
 
-        int offset = rotatedSecond.getWidth()/2;
-        resGraphics.drawImage(rotatedSecond, x - offset, y - offset, null);
+        int xOffset = rotatedSecond.getWidth() / 2;
+        int yOffset = rotatedSecond.getHeight() / 2;
+        resGraphics.drawImage(rotatedSecond, x - xOffset, y - yOffset, null);
 
         return res;
     }
@@ -34,8 +38,8 @@ public class ImageDealer {
     public static BufferedImage rotateImage(BufferedImage image, double angle) throws IOException {
         int size = (int) Math.sqrt(image.getWidth()*image.getWidth() + image.getHeight()*image.getHeight()) + 1;
         BufferedImage res = new BufferedImage(size, size, BufferedImage.TYPE_4BYTE_ABGR);
-
         Graphics2D resGraphics = (Graphics2D) res.getGraphics();
+
         AffineTransform at = new AffineTransform();
 
         int x = (size - image.getWidth())/2;
@@ -45,7 +49,7 @@ public class ImageDealer {
 
         resGraphics.drawImage(image, at, null);
 
-//        ImageIO.write(res, "PNG", new File("rotated.png"));
+        //ImageIO.write(res, "PNG", new File("rotated" + System.currentTimeMillis() + ".png"));
 
         return res;
     }
@@ -59,7 +63,7 @@ public class ImageDealer {
 
         resGraphics.drawImage(image, at, null);
 
-//        ImageIO.write(res, "PNG", new File("scaled.png"));
+        //ImageIO.write(res, "PNG", new File("scaled" + System.currentTimeMillis() + ".png"));
 
         return res;
     }
