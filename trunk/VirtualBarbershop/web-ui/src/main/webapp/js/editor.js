@@ -7643,6 +7643,7 @@ Canvas.prototype.onUpdateActions = function (a) {
     Event.trigger(this, "updateactions", a)
 };
 Canvas.prototype.removeSelected = function () {
+    $("#editor_bbinfo_block").addClass("visibilityhidden");
     var a = [];
     Event.pauseEvents(this, "change");
     Event.pauseEvents(this, "removeitem");

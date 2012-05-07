@@ -38,8 +38,7 @@
 					</div>
 					<div id="upload_status" class="centered"></div>
 					
-					<!-- TODO: Replace onclick handler. -->
-					Or, check <a href="#" name="main_to_collages" onclick="switchTab('collages_div'); return false;">already created collages</a>
+					Or, check <a href="#" name="main_to_collages" onclick="alreadyCreatedCollages_click(); return false;">already created collages</a>
 				</td></tr>
 				<tr><td class="footer">
 					<div class="centered hr" style="margin-bottom: 20px;"></div>
@@ -58,7 +57,7 @@
 				<tr><td class="content">
 					<table width="100%" cellspacing="0" cellpadding="0">
 						<tr>
-							<td width="80%">
+							<td width="70%">
 								<!-- <div id="editor_canvas_div" class="centered placeholder" style="width: 800px; height: 500px;"></div> -->
                                 <div id="edapp">
                                     <div id="canvas" style="border: 1px solid black">
@@ -71,8 +70,16 @@
 
 							</td>
 							<td class="leftalign">
-								<button style="border: 1px solid black; width: 150px; height: 40px;" onclick="publishButton_click(); return false; switchTab('collages_div'); return false;">Publish</button><br /><br />
+								<button style="border: 1px solid black; width: 150px; height: 40px;" onclick="publishButton_click(); return false; switchTab('collages_div'); return false;">Publish</button>
+                                <img id="ajax_loader_image" src="resources/ajax-loader.gif" width="25" height="25" class="visibilityhidden" style="position: relative; top: 4px; left: 8px;" />
+                                <br /><br />
 								<a href="#" name="editor_to_main" onclick="switchTab('main_div'); return false;">Use another picture</a>
+                                <br /><br />
+                                <div id="editor_bbinfo_block" class="visibilityhidden">
+                                    This haircut is available here:
+								    <ul id="haircut_barbershops_ul" class="barbershops_ul">
+								    </ul>
+                                </div>
 							</td>
 						</tr>
 					</table>
@@ -85,7 +92,7 @@
 		</div>
 		
 		<div id="collages_div" class="displaynone">
-			<table width="100%" cellspacing="0" cellpadding="0" class="centered">
+			<table width="100%" cellspacing="0" cellpadding="0">
 				<tr><td class="content">
                     <div id="collage_gallery_container" class="centered">
                         <table id="collage_gallery_table" class="placeholder" width="100%">
@@ -102,35 +109,14 @@
 								</div>
 							</td>
 							<td class="leftalign">
-								This haircut is available here:
-								<ul class="barbershops_ul">
-									<li>
-										Barbershop "Svetlana"<br />
-										325 Wall St. New York<br />
-										952-234-2351
-									</li>
-									<li>
-										Barbershop "Mimoza"<br />
-										36 Round Sq. San Francisco<br />
-										352-216-1616
-									</li>
-									<li>
-										Barbershop "Rusalka"<br />
-										156 Circle Av. Denwer<br />
-										261-HAIRCUT
-									</li>
-								</ul>								
+                                <a href="#" name="collages_to_main" onclick="switchTab('main_div'); return false;">Create a new collage</a>
+                                <br /><br />
+                                This haircut is available here:
+								<ul id="collage_barbershops_ul" class="barbershops_ul">
+								</ul>
 							</td>
 						</tr>
 					</table>
-				</td></tr>
-				<tr><td class="content">
-					<!-- TODO: Replace onclick handler. -->
-					<a href="#" name="collages_to_main" onclick="switchTab('main_div'); return false;">Create a new collage</a>
-				</td></tr>
-				<tr><td class="footer">
-					<div class="centered hr" style="margin-bottom: 20px;"></div>
-					VB team, 2012.<br />
 				</td></tr>
 			</table>
 		</div>
