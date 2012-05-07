@@ -32,7 +32,7 @@ public class InfoAction extends Action {
                     count3++;
 
                     output.append("\"").append(attr).append("\"");
-                    output.append(":\"").append(info.get(attr)).append("\"");
+                    output.append(":\"").append(info.get(attr).replace("\"","\\\"")).append("\"");
 
                     if (count3 < info.keySet().size()) {
                         output.append(",");
