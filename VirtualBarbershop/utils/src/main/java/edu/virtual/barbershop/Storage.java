@@ -315,14 +315,18 @@ public class Storage {
         return collageId;
     }
 
-    public void addBarbershop(String name, String address, String phone) {
+    public boolean addBarbershop(String name, String address, String phone) {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate("insert into Barbershop (name, address, phone) values ('"
                     + name + "', '" + address + "', '" + phone + "')");
             statement.close();
+
+            return true;
         } catch (SQLException e) {
             logger.error(e.getMessage(), e);
+
+            return false;
         }
     }
 
@@ -346,7 +350,7 @@ public class Storage {
         return result;
     }
 
-    public void saveHaircut(String haircutId, String shape, String price, int barbershopId) {
+    public boolean saveHaircut(String haircutId, String shape, String price, int barbershopId) {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate("insert into Haircut (id, shape) values ('"
@@ -354,8 +358,12 @@ public class Storage {
             statement.executeUpdate("insert into Offer (haircut_id, barbershop_id, price) values ('"
                     + haircutId + "', " + String.valueOf(barbershopId) + ", '" + price + "')");
             statement.close();
+
+            return true;
         } catch (SQLException e) {
             logger.error(e.getMessage(), e);
+
+            return false;
         }
     }
 
