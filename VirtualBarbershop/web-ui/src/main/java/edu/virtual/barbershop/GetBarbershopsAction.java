@@ -17,7 +17,7 @@ public class GetBarbershopsAction extends Action {
         for (int id : barbershops.keySet()) {
             count++;
             output.append("\"").append(id).append("\"");
-            output.append(":\"").append(barbershops.get(id)).append("\"");
+            output.append(":\"").append(barbershops.get(id).replace("\"", "\\\"")).append("\"");
             if (count < barbershops.keySet().size()) {
                 output.append(",");
             }
