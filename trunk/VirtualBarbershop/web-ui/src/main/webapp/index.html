@@ -21,17 +21,19 @@
 		<div id="main_div">
 			<table width="100%" cellspacing="0" cellpadding="0">
 				<tr><td class="header">
-					Virtual Barbershop
+					<span class="header">Virtual Barbershop</span><br/>
+                    <span class="subheader">upload your face | try on haircuts | go to the barbershop!</span>
 					<div class="centered hr" style="margin-top: 20px;"></div>
 				</td></tr>
 				<tr><td class="content">
-					<form id="file_upload_form" action="vb?action=upload" method="post" enctype="multipart/form-data">
-						<label for="imagefile_input">Your picture:</label>
+                    <form id="file_upload_form" action="vb?action=upload" method="post" enctype="multipart/form-data">
+						<label for="imagefile_input">Your face:</label>
 						<!-- TODO: Customize the upload field. http://www.quirksmode.org/dom/inputfile.html -->
-						<input type="file" name="imagefile" id="imagefile_input" accept="image/jpeg" style="border: 1px solid black; width: 350px; height: 40px; font-family: Georgia; background-color: #FFFFFF;">
+						<input type="file" name="imagefile" id="imagefile_input" accept="image/jpeg" style="border: 1px solid black; width: 350px; font-family: Georgia; background-color: #FFFFFF;">
 						<input type="submit" name="upload" value="Upload" style="border: 1px solid black; width: 150px; height: 40px; font-family: Georgia; cursor: pointer;" onclick="uploadButton_click();">
-					</form><br />
-					
+					</form>
+					<span class="smallnote">Please note that your image size shouldn't exceed 5 megabytes</span>
+
 					<div id="progress_div" class="centered visibilityhidden">
 						<div id="progress_bar"></div>
 						<div id="progress_percent">0%</div>
@@ -42,7 +44,7 @@
 				</td></tr>
 				<tr><td class="footer">
 					<div class="centered hr" style="margin-bottom: 20px;"></div>
-					VB team, 2012.<br />
+					Made by VirtualBB team, 2012.<br />
 				</td></tr>
 			</table>
 		</div>
@@ -70,12 +72,14 @@
 
 							</td>
 							<td class="leftalign">
-								<button style="border: 1px solid black; width: 150px; height: 40px;" onclick="publishButton_click(); return false; switchTab('collages_div'); return false;">Publish</button>
-                                <img id="ajax_loader_image" src="resources/ajax-loader.gif" width="25" height="25" class="visibilityhidden" style="position: relative; top: 4px; left: 8px;" />
-                                <br /><br />
-								<a href="#" name="editor_to_main" onclick="switchTab('main_div'); return false;">Use another picture</a>
+                                Choose haircut from the gallery<br />
+								or <a href="#" name="editor_to_main" onclick="switchTab('main_div'); return false;">use another picture</a>
                                 <br /><br />
                                 <div id="editor_bbinfo_block" class="visibilityhidden">
+                                    <button style="border: 1px solid black; width: 150px; height: 40px;" onclick="publishButton_click(); return false; switchTab('collages_div'); return false;">Publish</button>
+                                    <img id="ajax_loader_image" src="resources/ajax-loader.gif" width="25" height="25" class="visibilityhidden" style="position: relative; top: 4px; left: 8px;" />
+                                    <br /><br />
+
                                     This haircut is available here:
 								    <ul id="haircut_barbershops_ul" class="barbershops_ul">
 								    </ul>
