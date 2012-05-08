@@ -20,6 +20,7 @@ $(document).ready(
 
 			$("#" + FILE_UPLOAD_FORM_ID).ajaxForm({
                 beforeSubmit: function() {
+                    if ($("#imagefile_input").val() == "") return false;
                     console.log('beforeSubmit');
                     status.empty();
                     var percentVal = '0%';
@@ -125,9 +126,9 @@ function switchTab(newDivId) {
     var oldDivId = globals.currentDivId;
 	//$("#"+oldDivId).slideToggle("slow");
 	$("#"+oldDivId).addClass("displaynone");
-	$("#"+newDivId).removeClass("displaynone");
-	//$("#"+newDivId).slideToggle("slow");
-	globals.currentDivId = newDivId;
+    $("#"+newDivId).removeClass("displaynone");
+    //$("#"+newDivId).slideToggle("slow");
+    globals.currentDivId = newDivId;
 }
 
 function loadHaircuts() {

@@ -59,10 +59,24 @@ a:hover, a:active {
 }
 
 td.header {
-	font-family: Helvetica, Tahoma, Verdana;
+	padding: 15px;
+}
+
+span.header {
+    font-family: Helvetica, Tahoma, Verdana;
 	font-size: 20pt;
 	font-weight: bold;
-	padding: 15px;
+}
+
+span.subheader {
+    font-size: 9pt;
+    font-style: italic;
+    color: #666666;
+}
+
+span.smallnote {
+    font-size: 9pt;
+    color: #666666;
 }
 
 td.content {
@@ -76,12 +90,6 @@ td.footer {
 
 span.smallheader {
 	font-size: 14pt;	
-}
-
-span.smallnote {
-	font-size: 9pt;
-	font-style: italic;
-	color: #666666;
 }
 
 .barbershops_ul li {
