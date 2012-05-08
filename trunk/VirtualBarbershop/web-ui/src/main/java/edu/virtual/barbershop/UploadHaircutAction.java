@@ -3,6 +3,7 @@ package edu.virtual.barbershop;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.FileRenamePolicy;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -15,6 +16,7 @@ public class UploadHaircutAction extends Action {
         int barbershopId = Integer.parseInt(req.getParameter("barbershop_id"));
 
         final String haircutId = String.valueOf(System.currentTimeMillis());
+        ServletOutputStream out = resp.getOutputStream();
 
         try {
             MultipartRequest multipartRequest = new MultipartRequest(req,
@@ -28,9 +30,20 @@ public class UploadHaircutAction extends Action {
             });
         } catch (IOException e) {
             logger.error(e.getMessage());
+
+            out.print("false");
+            out.flush();
+
             return;
         }
 
-        storage.saveHaircut(haircutId, shape, price, barbershopId);
+        boolean res = storage.saveHaircut(haircutId, shape, price, barbershopId);
+
+        if (res) {
+            out.print("true");
+        } else {
+            out.print("false");
+        }
+        out.flush();
     }
 }
