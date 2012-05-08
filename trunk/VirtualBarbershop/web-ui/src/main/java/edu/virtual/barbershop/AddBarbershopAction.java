@@ -15,11 +15,7 @@ public class AddBarbershopAction extends Action {
 
         ServletOutputStream out = resp.getOutputStream();
 
-        if (res) {
-            out.print("true");
-        } else {
-            out.print("false");
-        }
+        out.print(res);
         out.flush();
     }
 }

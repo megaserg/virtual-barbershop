@@ -39,11 +39,7 @@ public class UploadHaircutAction extends Action {
 
         boolean res = storage.saveHaircut(haircutId, shape, price, barbershopId);
 
-        if (res) {
-            out.print("true");
-        } else {
-            out.print("false");
-        }
+        out.print(res);
         out.flush();
     }
 }
