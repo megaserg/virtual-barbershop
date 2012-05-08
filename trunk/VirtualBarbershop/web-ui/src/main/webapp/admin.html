@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Language" content="en" />
+		<meta name="Author" content="Sergey Serebryakov" />
+
+		<link rel="stylesheet" href="css/main.css" type="text/css" />
+        <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="js/jquery.form.js"></script>
+        <script type="text/javascript" src="js/barbershop-admin-1.0.js"></script>
+
+		<title>
+			Virtual Barbershop Admin
+		</title>
+	</head>
+
+	<body>
+		<div id="main_div">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr><td class="header">
+					<span class="header">Virtual Barbershop Admin</span><br/>
+                    <span class="subheader">upload new haircut | add new barbershop</span>
+					<div class="centered hr" style="margin-top: 20px;"></div>
+				</td></tr>
+				<tr><td class="content">
+                    <form id="haircut_upload_form" action="vb?action=uploadHaircut" method="post" enctype="multipart/form-data">
+						<table class="formtable" align="center">
+                            <tr>
+                                <td>
+                                    <label for="imagefile_input">Haircut:</label>
+                                </td>
+                                <td>
+                                    <input type="file" name="imagefile" id="imagefile_input" accept="image/png" style="border: 1px solid black; width: 300px; font-family: Georgia; background-color: #FFFFFF;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="centercontent">
+                                    <span class="smallnote">Please note that your image size shouldn't exceed 5 megabytes</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="price_input">Price:</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="price" id="price_input" placeholder="120$" size="30" />
+                                    <input type="hidden" name="shape" id="shape_input" value="progressive"  />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="barbershop_id_select">Barbershop:</label>
+                                </td>
+                                <td>
+                                    <select name="barbershop_id" id="barbershop_id_select"></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="centercontent">
+                                    <input type="submit" name="upload" value="Upload" style="border: 1px solid black; width: 150px; height: 40px; font-family: Georgia; cursor: pointer;">
+                                    <div id="uploadedMessage">OK</div>
+                                </td>
+                            </tr>
+						</table>
+					</form>
+				</td></tr>
+
+                <tr><td class="content">
+                    <form id="add_barbershop_form" action="vb?action=addBarbershop" method="post">
+                        <table class="formtable" align="center">
+                            <tr>
+                                <td>
+                                    <label for="name_input">Name:</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="name" id="name_input" placeholder='Barbershop "Sakura"' size="30" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="address_input">Address:</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="address" id="address_input" placeholder="Broadway Str. 51" size="30" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="phone_input">Phone:</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="phone" id="phone_input" placeholder="921-212-8506" size="30" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="centercontent">
+                                    <input type="submit" name="add" value="Add" style="border: 1px solid black; width: 150px; height: 40px; font-family: Georgia; cursor: pointer;">
+                                    <div id="addedMessage">OK</div>
+                                </td>
+                            </tr>
+                        </table>
+					</form>
+				</td></tr>
+
+                <tr><td class="footer">
+					<div class="centered hr" style="margin-bottom: 20px;"></div>
+					Made by VirtualBB team, 2012.<br />
+				</td></tr>
+			</table>
+		</div>
+	</body>
+</html>

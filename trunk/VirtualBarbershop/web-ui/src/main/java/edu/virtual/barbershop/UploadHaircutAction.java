@@ -11,10 +11,6 @@ import java.io.IOException;
 
 public class UploadHaircutAction extends Action {
     public void perform(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String shape = req.getParameter("shape");
-        String price = req.getParameter("price");
-        int barbershopId = Integer.parseInt(req.getParameter("barbershop_id"));
-
         final String haircutId = String.valueOf(System.currentTimeMillis());
         ServletOutputStream out = resp.getOutputStream();
 
@@ -28,6 +24,15 @@ public class UploadHaircutAction extends Action {
                             + haircutId + ".png");
                 }
             });
+
+            String shape = multipartRequest.getParameter("shape");
+            String price = multipartRequest.getParameter("price");
+            int barbershopId = Integer.parseInt(multipartRequest.getParameter("barbershop_id"));
+
+            boolean res = storage.saveHaircut(haircutId, shape, price, barbershopId);
+
+            out.print(res);
+            out.flush();
         } catch (IOException e) {
             logger.error(e.getMessage());
 
@@ -36,10 +41,5 @@ public class UploadHaircutAction extends Action {
 
             return;
         }
-
-        boolean res = storage.saveHaircut(haircutId, shape, price, barbershopId);
-
-        out.print(res);
-        out.flush();
     }
 }

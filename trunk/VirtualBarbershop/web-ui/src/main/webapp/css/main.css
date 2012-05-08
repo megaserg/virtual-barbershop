@@ -1,4 +1,4 @@
-﻿body, input, button {
+﻿body, input, button, select, option {
 	font-family: Georgia, "Palatino Linotype", Sylfaen, Tahoma, serif;
 	font-size: 16pt;
 }
@@ -138,6 +138,14 @@ span.smallheader {
     margin-top: 30px;
     margin-bottom: 30px;
 }
+
+ .formtable td {
+    text-align: left;
+ }
+
+ td.centercontent {
+    text-align: center;
+ }
 /*
 	font.header {font-size: 14pt}
 	li {font-size: 12pt}
